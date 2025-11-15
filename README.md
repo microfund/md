@@ -13,9 +13,10 @@ how to md files.
 
 `ハイライト`
 
-
-
-## マークダウンでどのような図を表示することができるのか？
+## Outline がカーソルを追いかけるようにする(VSCode)
+* OUTLINE ペインの右上にある「カーソルに追従 (Follow Cursor)」アイコン をクリックしてオンにする
+ 
+## マークダウンで表現できる図
 
 ※VSCode では「Markdown Preview Mermaid Support」 などの拡張機能を入れると、
 mermaid … ブロックがプレビューで図として表示されます。
