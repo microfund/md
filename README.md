@@ -44,7 +44,7 @@ mermaid … ブロックがプレビューで図として表示されます。
 - [ ] 実装
 - [ ] テスト
 
-
+### ディレクトリ構造の図（ASCIIアート）
 ```
 project-root/
 ├─ src/
@@ -52,6 +52,38 @@ project-root/
 │ └─ utils.py
 └─ README.md
 ```
+
+### フローチャート（flowchart）
+
+```mermaid
+flowchart TD
+    A[Start] --> B{ログイン済み?}
+    B -->|Yes| C[ダッシュボード表示]
+    B -->|No| D[ログイン画面へリダイレクト]
+    C --> E[ログアウト]
+    E --> B
+```
+
+```mermaid
+graph TD
+    A[Start] --> B[Process]
+    B --> C[End]
+```
+
+
+---
+### 2-2. シーケンス図（sequenceDiagram）
+```mermaid
+sequenceDiagram
+    actor User
+    participant Browser
+    participant Server
+    User->>Browser: URLを入力
+    Browser->>Server: HTTP GET /index
+    Server-->>Browser: HTMLレスポンス
+    Browser-->>User: ページ表示
+```
+
 
 
 ## links
