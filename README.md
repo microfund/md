@@ -309,6 +309,140 @@ GitHubで利用可能
 
 [^1]: 脚注の内容をここに記載
 
+## シーケンス図の基本
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+    User->>Browser: URL input
+    Browser->>Server: HTTP GET /index
+    Server-->>Browser: HTML response
+    Browser-->>User: Display page
+```
+
+---
+
+## さまざまな表現
+
+### アクターとパーティシパント
+```mermaid
+sequenceDiagram
+    actor User
+    participant App
+    participant API
+    participant DB
+    
+    User->>App: Login request
+    App->>API: POST /auth/login
+    API->>DB: Validate credentials
+    DB-->>API: User data
+    API-->>App: JWT token
+    App-->>User: Login success
+```
+
+---
+
+### メッセージの種類
+```mermaid
+sequenceDiagram
+    participant A
+    participant B
+    
+    A->>B: Solid arrow (sync)
+    A-->>B: Dotted arrow (async response)
+    A-)B: Open arrow (async)
+    A-xB: Cross arrow (lost message)
+```
+
+---
+
+### ループと条件分岐
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    
+    Client->>Server: Request data
+    
+    alt Success
+        Server-->>Client: Return data
+    else Error
+        Server-->>Client: Error message
+    end
+    
+    loop Every 5 seconds
+        Client->>Server: Health check
+        Server-->>Client: OK
+    end
+```
+
+---
+
+### 並列処理
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API1
+    participant API2
+    
+    User->>Frontend: Submit form
+    
+    par Parallel requests
+        Frontend->>API1: Request A
+        Frontend->>API2: Request B
+    end
+    
+    API1-->>Frontend: Response A
+    API2-->>Frontend: Response B
+    Frontend-->>User: Combined result
+```
+
+---
+
+### アクティベーションとノート
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    
+    Client->>+Server: Request
+    Note right of Server: Processing request
+    Server->>Server: Internal processing
+    Note over Client,Server: Communication established
+    Server-->>-Client: Response
+```
+
+---
+
+## 実用例：認証フロー
+```mermaid
+sequenceDiagram
+    actor User
+    participant Frontend
+    participant AuthAPI
+    participant Database
+    participant TokenService
+    
+    User->>Frontend: Enter credentials
+    Frontend->>AuthAPI: POST /login
+    activate AuthAPI
+    AuthAPI->>Database: Query user
+    Database-->>AuthAPI: User record
+    
+    alt Valid credentials
+        AuthAPI->>TokenService: Generate JWT
+        TokenService-->>AuthAPI: Token
+        AuthAPI-->>Frontend: 200 OK + Token
+        Frontend-->>User: Redirect to dashboard
+    else Invalid credentials
+        AuthAPI-->>Frontend: 401 Unauthorized
+        Frontend-->>User: Show error
+    end
+    deactivate AuthAPI
+```
+
 
 ## links
 * [https://mermaid.js.org/](https://mermaid.js.org/intro/)
