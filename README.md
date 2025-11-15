@@ -84,6 +84,127 @@ sequenceDiagram
     Browser-->>User: ページ表示
 ```
 
+---
+### 2-3. クラス図（classDiagram）
+```mermaid
+classDiagram
+    class User {
+        +int id
+        +string name
+        +login()
+        +logout()
+    }
+    class Session {
+        +string token
+        +datetime expiresAt
+    }
+    User "1" -- "0..*" Session : owns
+```
+
+---
+### 2-4. 状態遷移図（stateDiagram）
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Loading : ボタン押下
+    Loading --> Success : 取得成功
+    Loading --> Error : 取得失敗
+    Success --> Idle : 再読み込み
+    Error --> Idle : 再試行
+```
+
+---
+### 2-5. ER 図（erDiagram）
+```mermaid
+erDiagram
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+    PRODUCT ||--o{ ORDER_ITEM : "ordered in"
+    USER {
+        int id
+        string name
+        string email
+    }
+    ORDER {
+        int id
+        datetime created_at
+    }
+    PRODUCT {
+        int id
+        string name
+        int price
+    }
+```
+
+---
+### 2-6. ガントチャート（gantt）
+```mermaid
+gantt
+    title 開発スケジュール
+    dateFormat YYYY-MM-DD
+    section 設計
+        要件定義 :a1, 2025-11-01, 3d
+        詳細設計 :a2, after a1, 5d
+    section 実装
+        コーディング :b1, after a2, 7d
+        単体テスト :b2, after b1, 5d
+```
+
+---
+### 2-7. 円グラフ（pie）
+```mermaid
+pie showData
+    title ポートフォリオ内訳
+    "BTC" : 50
+    "ETH" : 20
+    "SOL" : 15
+    "その他アルト" : 15
+```
+
+
+---
+### 2-8. タイムライン（timeline）
+```mermaid
+timeline
+    title プロジェクトの主なイベント
+    2025-11-01 : 企画開始
+    2025-11-10 : 要件定義完了
+    2025-11-20 : プロトタイプ完成
+    2025-12-01 : ベータ版リリース
+```
+
+---
+### 2-9. マインドマップ（mindmap）
+```mermaid
+mindmap
+    root((取引戦略))
+        現物
+            長期保有
+            インデックス
+        レバレッジ
+            デイトレ
+            スイング
+        自動売買
+            Bot構築
+            リスク管理
+```
+
+---
+### 2-10. ユーザージャーニー図（journey）
+```mermaid
+journey
+    title ECサイトでのユーザー行動
+    section 訪問
+        トップページを閲覧 : 5:User
+    section 検索
+        商品検索 : 4:User
+        絞り込み : 3:User
+    section 購入
+        カートに追加 : 4:User
+        決済 : 2:User
+```
+
+
 
 
 ## links
