@@ -204,9 +204,113 @@ journey
         決済 : 2:User
 ```
 
+## Mermaidで追加可能な図
 
+### Git グラフ (gitGraph)
+コミット履歴やブランチの流れを可視化
+```mermaid
+gitGraph
+    commit
+    branch develop
+    checkout develop
+    commit
+    checkout main
+    merge develop
+```
+
+---
+
+### 要求図 (requirementDiagram)
+システム要件を構造化して表現
+```mermaid
+requirementDiagram
+    requirement test_req {
+        id: 1
+        text: System must respond within 1 second
+        risk: high
+        verifymethod: test
+    }
+    element system {
+        type: system
+    }
+    system - satisfies -> test_req
+```
+
+---
+
+### C4 図 (C4Context)
+システムアーキテクチャを表現
+```mermaid
+C4Context
+    title System Context
+    Person(user, "User", "End user of the system")
+    System(app, "Application", "Main application system")
+    Rel(user, app, "Uses")
+```
+
+---
+
+### Quadrant Chart (象限チャート)
+4つの象限で項目を分類・評価
+```mermaid
+quadrantChart
+    title Reach and Engagement
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 Improve
+    quadrant-2 Expand
+    quadrant-3 Re-evaluate
+    quadrant-4 Maintain
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+```
+
+---
+
+### XY Chart (散布図・折れ線グラフ)
+時系列データや相関関係を可視化
+```mermaid
+xychart-beta
+    title "Sales Trend"
+    x-axis [jan, feb, mar, apr, may, jun]
+    y-axis "Sales" 0 --> 100
+    line [30, 45, 50, 65, 70, 80]
+```
+
+---
+
+## Mermaid以外のマークダウン表現
+
+### 数式 (LaTeX)
+数学・物理の数式を表現
+
+インライン: $E = mc^2$
+
+ブロック:
+$$
+\int_{0}^{\infty} e^{-x} dx = 1
+$$
+
+---
+
+### 絵文字
+GitHubで利用可能
+
+`:smile:` → 😊  
+`:rocket:` → 🚀
+
+---
+
+### 脚注
+長い説明や参照を本文外に記載
+
+本文中の参照[^1]
+
+[^1]: 脚注の内容をここに記載
 
 
 ## links
+* [https://mermaid.js.org/](https://mermaid.js.org/intro/)
 * https://www.markdownguide.org/cheat-sheet/?utm_source=chatgpt.com
 * https://qiita.com/Qiita/items/c686397e4a0f4f11683d?utm_source=chatgpt.com
